@@ -1,0 +1,227 @@
+// COLOR VARIABLES
+$color-pale-blue: hsl(243, 100%, 93%);
+$color-grayish-blue: hsl(229, 7%, 55%);
+$color-dark-blue: hsl(228, 56%, 26%);
+$color-dark-blue-2: hsl(229, 57%, 11%);
+
+
+// TYPOGRAPHY
+@font-face {
+    font-family: "Raleway";
+    src: url(/fonts/Raleway/Raleway-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url(/fonts/Raleway/Raleway-Bold.ttf);
+    font-weight: 700;
+}
+
+
+// MEDIA QUERY MANAGER
+@mixin respond($breakpoint) {
+    @if $breakpoint == desktop {
+        @media only screen and (min-width: 475px) { @content };
+    }
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: "Raleway";
+}
+
+body {
+    background: url(/images/bg-mobile.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include respond(desktop) {
+        background-color: $color-dark-blue-2;
+        background-image: url(/images/bg-desktop.png);
+        background-size: 100% 50%;
+        background-position: bottom;
+    }
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7%;
+
+    @include respond(desktop) {
+        display: block;
+
+    }
+}
+
+.container_first {
+    background-color: $color-dark-blue;
+    border-radius: 1rem;
+    border-top-right-radius: 11rem;
+    padding: 12%;
+    margin-bottom: 15px;
+
+    @include respond(desktop) {
+        padding: 5% 12% 5% 5%;
+        float: left;
+        margin-right: 3%;
+    }
+
+    &-logobox {
+        margin-bottom: 3rem;
+    }
+
+    &-buttons {
+        &-item {
+            background-color: $color-dark-blue-2;
+            border: none;
+            height: 5rem;
+            width: 5rem;
+            position: relative;            
+            border-radius: 1rem;
+
+            &:not(last-child) {
+                margin-right: 1.2rem;
+            }
+        }
+
+        .folder {
+            svg {
+                transform: translateY(3px);
+            }
+        }
+
+        .upload {
+            svg {
+                transform: translateY(5px);
+            }
+        }
+    }
+}
+
+
+.container_second {
+    background-color: $color-dark-blue;
+    padding: 12%;
+    width: 55%;
+    border-radius: 1rem;
+    color: $color-pale-blue;
+    font-size: 1.4rem;
+    font-weight: 400;
+    position: relative;
+
+    @include respond(desktop) {
+        float: left;
+        padding: 4%;
+    }
+
+    &-progress {
+        height: 2rem;
+        width: 100%;
+        border-radius: 50px;
+        background-color: $color-dark-blue-2;
+        padding: 3px;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        position: relative;
+
+
+        &-bar {
+            position: relative;
+            height: 100%;
+            width: 70%;
+            border-radius: 50px;
+            padding: 2px;
+            background-image: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+
+            &::after {
+                content: "";
+                position: absolute;
+                right: 2px;
+                height: 10px;
+                width: 10px;
+                border-radius: 50px;
+                background-color: #fff;
+            }
+        }
+
+        &-text {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 400;
+            margin-bottom: 2rem;
+
+            @include respond(desktop) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &-memory {
+        display: flex;
+        color: $color-dark-blue-2;
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        background-color: #fff;
+        border-radius: 1rem;
+        width: 18rem;
+        padding: 1.5rem 2.2rem;
+        justify-self: flex-start;
+        position: absolute;
+        left: 50%;
+        top: 80%;
+        transform: translateX(-50%);
+
+        @include respond(desktop) {
+            border-bottom-right-radius: 0;
+            transform: translateX(0);
+            position: absolute;
+            top: -5rem;
+            left: 64%;
+            // right: 1px;
+
+            &::after {
+                content: "";
+                border-left: 20px solid transparent;
+                border-bottom: 20px solid transparent;
+                border-top: 20px solid #fff;
+                display: inline-block;
+                position: absolute;
+                right: 0;
+                top: 100%;
+            }
+        }
+
+        p {
+            align-self: center;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-left: 1rem;
+            color: $color-grayish-blue;
+        }
+    }
+}
