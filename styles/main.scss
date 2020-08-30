@@ -70,8 +70,7 @@ body {
     padding: 7%;
 
     @include respond(desktop) {
-        display: block;
-
+        flex-direction: row;
     }
 }
 
@@ -83,13 +82,13 @@ body {
     margin-bottom: 15px;
 
     @include respond(desktop) {
-        padding: 5% 12% 5% 5%;
-        float: left;
-        margin-right: 3%;
+        padding: 4% 9% 4% 3%;
+        margin-bottom: 0;
+        margin-right: 2.5rem;
     }
 
     &-logobox {
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     &-buttons {
@@ -124,7 +123,6 @@ body {
 .container_second {
     background-color: $color-dark-blue;
     padding: 12%;
-    width: 55%;
     border-radius: 1rem;
     color: $color-pale-blue;
     font-size: 1.4rem;
@@ -132,8 +130,10 @@ body {
     position: relative;
 
     @include respond(desktop) {
-        float: left;
-        padding: 4%;
+        width: 55%;
+        height: 16rem;
+        padding: 3%;
+        align-self: flex-end;
     }
 
     &-progress {
@@ -200,8 +200,7 @@ body {
             transform: translateX(0);
             position: absolute;
             top: -5rem;
-            left: 64%;
-            // right: 1px;
+            left: 67%;
 
             &::after {
                 content: "";
